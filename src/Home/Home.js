@@ -23,10 +23,13 @@ const Home = ({ navigation }) => {
                 contentInset={{ padding: 12 }}
                 renderItem={({ item }) => {
                     return [
-                        <TouchableOpacity style={{
-                            margin: 10, height: windowHeight * 0.15,
-                            backgroundColor: item.bgColor, borderRadius: 30, borderColor: "#5c6bc0"
-                        }}>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("Details")}
+                            style={{
+                                margin: 10, height: windowHeight * 0.15,
+                                backgroundColor: item.bgColor, borderRadius: 30,
+                                borderColor: item.bdrColor
+                            }}>
 
                             <Text style={styles.names}>
                                 {item.name}

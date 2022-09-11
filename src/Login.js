@@ -11,6 +11,9 @@ const windowHeight = Dimensions.get('window').height;
 const Login = ({ navigation }) => {
     return (
         <SafeAreaView>
+            <Text style={{margin:15, paddingTop:35, fontSize:34,paddingBottom:10, fontWeight:"100"}}>
+                Welcome back 
+            </Text>
             <View style={styles.form}>
                 <TextInput
                     style={styles.input}
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
         width: 150,
     },
     form: {
-        paddingTop: windowHeight / 4
+        paddingTop: windowHeight / 7
     },
     buttonFix: {
         flexDirection: "row",
