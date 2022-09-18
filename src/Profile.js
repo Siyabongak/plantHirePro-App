@@ -1,9 +1,18 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity, } from 'react-native';
+import { registration } from './Backend/Authentication';
 
 // create a component
 const Profile = ({ navigation }) => {
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const registerUser = () => {
+        registration(firstName,lastName,email,password)
+    }
     return (
         <SafeAreaView>
             <Text style={{
@@ -15,21 +24,30 @@ const Profile = ({ navigation }) => {
             <TextInput
                 style={styles.input}
                 placeholder="First Name"
+                value={firstName}
+                onChangeText={text => setFirstName(text)}
 
             />
             <TextInput
                 style={styles.input}
                 placeholder="Last Name"
+                value={lastName}
+                onChangeText={text => setLastName(text)}
 
             />
             <TextInput
                 style={styles.input}
                 placeholder="Email"
+                value={email}
+                onChangeText={text => setEmail(text)}
 
             />
             <TextInput
                 style={styles.input}
                 placeholder="Create Password"
+                value={password}
+                secureTextEntry
+                onChangeText={text => setPassword(text)}
 
             />
             <TextInput
@@ -39,7 +57,7 @@ const Profile = ({ navigation }) => {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate("Profile")}
+                onPress={registerUser}
             >
                 <Text style={{ color: "white" }}>Save</Text>
             </TouchableOpacity>

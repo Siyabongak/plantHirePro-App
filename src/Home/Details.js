@@ -8,7 +8,7 @@ import Loader from '../Loader';
 import Carousel from 'react-native-snap-carousel';
 
 // create a component
-const Details = ({navigation}) => {
+const Details = ({ navigation }) => {
     const companies = MachineList
     let refCarousel = null
     const [currentLocation, setCurrentLocation] = useState(null);
@@ -68,14 +68,26 @@ const Details = ({navigation}) => {
                 <Text style={{ margin: 3, fontWeight: "300", paddingStart: 5, }}>
                     {item.hours}
                 </Text>
-                <Text style={{ margin: 3, fontWeight: "300", paddingStart: 5, }}>
-                    {item.contact}
-                </Text>
-                <Image style={styles.pic}  source={item.Image}/>
-                
-                
+                <TouchableOpacity style={styles.button}
+                    onPress={() => navigation.navigate('Rent')}>
+                         <Text style={{ color: "white", paddingStart:5 }}>Rent</Text>
+                </TouchableOpacity>
+
+                <Image style={styles.pic} source={item.Image} />
+
+
             </View>
         )
+    }
+
+    const onCarouselChange = (index) => {
+        let location = companies[index].coords
+        mapRef.animateToRegion({
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.03,
+            longitudeDelta: 0.04,
+        })
     }
 
 
@@ -85,6 +97,7 @@ const Details = ({navigation}) => {
 
                 ? <View>
                     <MapView style={styles.map}
+                        ref={(c) => mapRef = c}
                         initialRegion={{
                             latitude: -28.0642775,
                             longitude: 29.97857,
@@ -103,6 +116,7 @@ const Details = ({navigation}) => {
                         sliderWidth={Dimensions.get('window').width}
                         itemWidth={300}
                         containerCustomStyle={styles.carousel}
+                        onSnapToItem={(index) => onCarouselChange(index)}
                     />
 
                 </View>
@@ -133,14 +147,15 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height / 3,
     },
     button: {
-        margin: 3,
+        margin: 10,
         fontWeight: "300",
         paddingStart: 5,
         paddingBottom: 5,
-        backgroundColor:"#34515e",
-        width:40,
+        backgroundColor: "#34515e",
+        width: 50,
         borderRadius: 20,
-        
+        height:25
+
     },
     pic: {
         width: 110,
@@ -149,7 +164,7 @@ const styles = StyleSheet.create({
         right: 0,
         margin: 10,
         bottom: 10,
-    }
+    },
 
 });
 

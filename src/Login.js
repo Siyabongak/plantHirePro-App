@@ -1,14 +1,19 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Dimensions, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import firebaseConfig from './firebaseConfig';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 // create a component
 const Login = ({ navigation }) => {
+    const [email, setEmail]= useState("")
+    const [password, setPassword] = useState("")
+
+    
     return (
         <SafeAreaView>
             <Text style={{margin:15, paddingTop:35, fontSize:34,paddingBottom:10, fontWeight:"100"}}>
@@ -18,11 +23,16 @@ const Login = ({ navigation }) => {
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
+                    value={email}
+                    onChangeText={text => setEmail(text)}
 
                 />
                 <TextInput
                     style={styles.input}
                     placeholder="Password"
+                    value={password}
+                    secureTextEntry
+                    onChangeText={text => setPassword(text)}
                     
                 />
             </View>
@@ -55,7 +65,7 @@ const styles = StyleSheet.create({
         height: 40,
         margin: 12,
         borderWidth: 1,
-        padding: 10,
+        padding: 10, 
         borderRadius: 20,
 
     },

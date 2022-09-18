@@ -12,7 +12,7 @@ const machineData = [
         company:"CML",
         image:dozer,
         bgColor:"white",
-        bdrColor:"003d00"
+        bdrColor:"#c49000"
     },
     {
         name:"390D",
@@ -20,7 +20,7 @@ const machineData = [
         company:"SLS plant hire",
         image:excavator,
         bgColor:"white",
-        bdrColor:"#c43e00"
+        bdrColor:"#c49000"
     },
     {
         name:"B40D",
@@ -28,7 +28,7 @@ const machineData = [
         company:"Bob's Earth moving",
         image:adt,
         bgColor:"white",
-        bdrColor:"#c43e00"
+        bdrColor:"#c49000"
     },
     {
         name:"CAT 140H",
@@ -36,9 +36,9 @@ const machineData = [
         company:"SCRIBANTE",
         image:grader,
         bgColor:"white",
-        bdrColor:"#c43e00"
+        bdrColor:"#c49000"
     },
     
 ]
 
-export default machineData
+export default machineData;

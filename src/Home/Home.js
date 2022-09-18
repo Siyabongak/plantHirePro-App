@@ -28,7 +28,7 @@ const Home = ({ navigation }) => {
                             style={{
                                 margin: 10, height: windowHeight * 0.15,
                                 backgroundColor: item.bgColor, borderRadius: 30,
-                                borderColor: item.bdrColor
+                                borderColor: item.bdrColor, borderStartWidth:5
                             }}>
 
                             <Text style={styles.names}>
